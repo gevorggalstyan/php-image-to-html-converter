@@ -237,4 +237,14 @@ class Converter
     {
         return (string)$this->converted_html->table;
     }
+
+    public function get_as_table()
+    {
+        return $this->converted_html->table;
+    }
+
+    public function get_as_style()
+    {
+        return $this->converted_html->style;
+    }
 }
