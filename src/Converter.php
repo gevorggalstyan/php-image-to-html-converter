@@ -163,7 +163,7 @@ class Converter
         return $colors;
     }
 
-    public function compute()
+    public function convert()
     {
         $this->load($this->get_path());
         $this->resize($this->get_width());
@@ -240,11 +240,17 @@ class Converter
 
     public function get_as_table()
     {
+        if (!isset($this->converted_html->table)) {
+            $this->convert();
+        }
         return $this->converted_html->table;
     }
 
     public function get_as_style()
     {
+        if (!isset($this->converted_html->style)) {
+            $this->convert();
+        }
         return $this->converted_html->style;
     }
 }
