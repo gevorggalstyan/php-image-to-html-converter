@@ -1,6 +1,6 @@
 <?php
 
-namespace GevorgGalstyan\Image2Table;
+namespace GevorgGalstyan\Image2HTML;
 
 class Converter
 {
@@ -12,6 +12,7 @@ class Converter
     private $true_color;
     private $type;
     private $image;
+    private $converted_html;
 
     const HEXA = 0;
     const RGBA = 1;
@@ -224,7 +225,7 @@ class Converter
         $result->style = preg_replace('/,$/', ';', $style);
         $result->table = preg_replace('/,$/', ';', $html);
 
-        return $result;
+        $this->converted_html = $result;
     }
 
     private function rgb_to_hex($value)
@@ -234,6 +235,6 @@ class Converter
 
     public function __toString()
     {
-        return (string)$this->compute()->table;
+        return (string)$this->converted_html->table;
     }
 }

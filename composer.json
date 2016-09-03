@@ -1,6 +1,6 @@
 {
-    "name": "gevorggalstyan/image2table",
-    "description": "PHP Composer Package to convert images to HTML tables",
+    "name": "gevorggalstyan/image2html",
+    "description": "PHP Composer Package to convert images to HTML.",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GevorgGalstyan\\Image2Table\\": "src"
+            "GevorgGalstyan\\Image2HTML\\": "src"
         }
     }
 }
