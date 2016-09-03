@@ -1,0 +1,17 @@
+{
+    "name": "gevorggalstyan/image2table",
+    "description": "PHP Composer Package to convert images to HTML tables",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gevorg A. Galstyan",
+            "email": "gevorg.galstyan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.3.3 || ^7.0",
+        "ext-gd": "*"
+    }
+}
