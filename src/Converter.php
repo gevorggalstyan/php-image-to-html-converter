@@ -108,7 +108,7 @@ class Converter
             throw new \InvalidArgumentException('Image type not allowed.');
         }
 
-        if ($this->type === IMAGETYPE_JPEG) {
+        if ($this->type === IMAGETYPE_PNG) {
             $this->image = imagecreatefrompng($file_name);
         } else {
             $this->image = imagecreatefromjpeg($file_name);
