@@ -14,3 +14,5 @@ $style = $converted_image->compute()->style;
 echo '<div style="' . $style . '"></div>;
 
 ```
+
+\\TODO Full Readme
