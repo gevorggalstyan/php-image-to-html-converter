@@ -19,15 +19,15 @@ class Converter
     const BEST = 2;
 
     public function __construct($file_name,
-                                $color_type = Converter::BEST,
                                 $width = 100,
+                                $color_type = Converter::BEST,
                                 $pixel_size = 1,
                                 $blur = 0,
                                 $true_color = TRUE)
     {
         $this->set_path($file_name);
-        $this->set_color_type($color_type);
         $this->set_width($width);
+        $this->set_color_type($color_type);
         $this->set_pixel_size($pixel_size);
         $this->set_blur($blur);
         $this->set_true_color($true_color);
