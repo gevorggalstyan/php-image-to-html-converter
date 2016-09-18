@@ -18,14 +18,14 @@ class Converter
     const RGBA = 1;
     const BEST = 2;
 
-    public function __construct($file_name,
+    public function __construct($image_path,
                                 $width = 100,
-                                $color_type = Converter::BEST,
+                                $color_type = self::BEST,
                                 $pixel_size = 1,
                                 $blur = 0,
                                 $true_color = TRUE)
     {
-        $this->set_path($file_name);
+        $this->set_path($image_path);
         $this->set_width($width);
         $this->set_color_type($color_type);
         $this->set_pixel_size($pixel_size);
@@ -46,11 +46,11 @@ class Converter
     public function set_color_type($type)
     {
         if (
-            $type !== Converter::HEXA
-            && $type !== Converter::RGBA
-            && $type !== Converter::BEST
+            $type !== self::HEXA
+            && $type !== self::RGBA
+            && $type !== self::BEST
         ) {
-            throw new \InvalidArgumentException('Color type not allowed.');
+            throw new \Exception('Invalid color type.');
         }
         $this->color_type = $type;
     }
@@ -95,24 +95,24 @@ class Converter
         return $this->true_color;
     }
 
-    public function load($file_name)
+    public function load($image_path)
     {
-        $image_info = @getimagesize($file_name);
+        $image_info = @getimagesize($image_path);
 
         if (!$image_info) {
-            throw new \InvalidArgumentException('File is invalid image.');
+            throw new \Exception('Invalid image file.');
         }
 
         $this->type = $image_info[2];
 
         if ($this->type !== IMAGETYPE_JPEG && $this->type !== IMAGETYPE_PNG) {
-            throw new \InvalidArgumentException('Image type not allowed.');
+            throw new \Exception('Unsupported image format.');
         }
 
         if ($this->type === IMAGETYPE_PNG) {
-            $this->image = imagecreatefrompng($file_name);
+            $this->image = imagecreatefrompng($image_path);
         } else {
-            $this->image = imagecreatefromjpeg($file_name);
+            $this->image = imagecreatefromjpeg($image_path);
         }
     }
 
@@ -192,8 +192,8 @@ class Converter
                         : '0 ';
                     $style .= $step . 'px ';
 
-                    if (($this->color_type === Converter::BEST && $alpha < 1)
-                        OR $this->color_type === Converter::RGBA
+                    if (($this->color_type === self::BEST && $alpha < 1)
+                        OR $this->color_type === self::RGBA
                     ) {
                         $rgba = $colors['red'] . ',' .
                             $colors['green'] . ',' .
